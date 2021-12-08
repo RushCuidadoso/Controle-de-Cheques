@@ -1,0 +1,138 @@
+﻿INICIO 14/06/16 - INICIO DE CHANGELOG 17/06/2016
+PROJECT "Definir nombre"
+
+Crear menu principal * 17/06
+Crear ultimos 7 dias * 17/06
+Crear registro de parametros *banco*...*...* * 29/06
+Crear submenu para abrir registro de parametros * 29/06
+Crear vista para cheques que ya pasaron el dia pero no fueron compensados *29/06?
+Crear busqueda de cheques por varios tipos de busqueda *29/06
+Dobleclick al cheque en menu y lista abrir registro cheque en editar *04/07
+Sacar habilidad de edicion en las tablas *04/07
+Sacar la habilidad de edicion de los combos (usar codigo en coderegistro>iniciar) *05/07
+Crear impresion en lista y en menu *06/07
+Uniformizar botones y tamaños de todo *08/07
+Aumentar tamaño de ventanas 1190x483 *08/07
+Arrumar ordem de data em DB *26/07
+Arrumar decimais em lista e pdf *27/07
+Arrumar para cheque devolvido *02/08
+Crear frmciudad y frmloja *04/08
+Ajustar tabulaciones *05/08
+Arrumar tipo de conta *05/08
+Fijar tamaños de ventanas *08/08
+si se selecciona cuenta no se puede introducir busqueda *09/08
+Eliminar posibilidad de maximizar *09/08
+actualizar formularios anteriores al cerrar *09/08
+Crear seguridad MAC *09/08
+Arreglar desaparicion de icono en barra *15/08
+Arreglar parametros para que no se cierre *15/08
+Crear copia de seguridad *15/08
+
+Arrumar edição de cheque para aparecer focus no cheque editado ao terminar
+Arrumar ordem em extrato
+Ajustar tamaño tablas
+Ajustar tamaño tablas con metodo header y tamaño de campo
+Arreglar guardar ciudad y loja
+
+
+Crear opcion para cheque sin fecha
+Copyright ULTIMO
+
+
+
+
+Crear ingreso de movimiento tipo prestamo ourocard *In Dev
+Controle de quantidade de talões de cheques pra cada conta
+Crear funciones de ENTER
+Considerar por valor na conta corrente
+
+
+
+
+
+
+
+import psycopg2
+        import sys
+
+
+        con = None
+
+        try:
+
+            con = psycopg2.connect(database='local', user='local', password='local',port='1970')
+            cur = con.cursor()
+            cur.execute('SELECT x FROM t')
+            f = open('test.sql', 'w')
+            for row in cur:
+              f.write("insert into t values (" + str(row) + ");")
+        except psycopg2.DatabaseError, e:
+            print 'Error %s' % e
+            sys.exit(1)
+        finally:
+            if con:
+                con.close()
+
+
+
+
+
+
+
+
+
+
+
+        # when you want to destroy the dialog set this to True
+        self._want_to_close = False
+
+    # def closeEvent(self, evnt):
+    #     # if self._want_to_close:
+    #     #     super(MyDialog, self).closeEvent(evnt)
+    #     # else:
+    #     mensaje = QtGui.QMessageBox.question(self, "Botao Fechar", "A janela sera minimizada em vez de fechada",QtGui.QMessageBox.Yes, QtGui.QMessageBox.No)
+    #     if (mensaje == QtGui.QMessageBox.No):
+    #         evnt.ignore()
+    #         self.setWindowState(QtCore.Qt.WindowMinimized)
+
+
+pagos
+no pagos
+todos
+-------
+seleccion de cuenta
+todos
+-------------
+
+
+
+
+
+
+
+
+
+
+
+
+        #if self.checkdata.isChecked() and self.checkconta.isChecked():
+            #cur.execute('select count(*) from cheque where num_cheque like %s'+pagado+conta+fecha,[self.buscar,codconta,self.fechamin,self.fechamax])
+            #print 1
+        #elif self.checkdata.isChecked() and not self.checkconta.isChecked():
+            #cur.execute('select count(*) from cheque where num_cheque like %s'+pagado+fecha,[self.buscar,self.fechamin,self.fechamax])
+            #print 2
+        #elif self.checkconta.isChecked() and not self.checkdata.isChecked():
+            #cur.execute('select count(*) from cheque where num_cheque like %s'+pagado+conta,[self.buscar,codconta])
+            #print 3
+        ##elif len(self.buscar)>0:
+            ##cur.execute('select count(*) from cheque where num_cheque like '+self.buscar+pagado)
+            ##print 4
+        #else:
+            #if self.cbopagado.currentIndex()==2:
+                #pagado=" where pagado='Nao'"
+                #print self.cbopagado.currentText(), 'index'
+            #elif self.cbopagado.currentIndex()==1:
+                #pagado=" where pagado='Sim'"            
+                #print self.cbopagado.currentText(), 'index'
+            #cur.execute('select count(*) from cheque'+pagado)
+            #print 5
