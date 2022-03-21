@@ -179,11 +179,7 @@ class listaApp(QtWidgets.QMainWindow, frmlista.Ui_frmlista):
         rows = cur.fetchone()
         self.rows = rows
         # -----
-        cur.execute(
-            'select a.nom_banco, b.num_agencia, c.num_conta from banco a, agencia b, conta c where '
-            'c.cod_agencia=b.cod_agencia and b.cod_banco=a.cod_banco')
-        nroconta = cur.fetchone()
-        self.conta = nroconta[0] + ' ' + nroconta[1] + ' ' + nroconta[2]
+
         suma = 0
         # -----
         if int(rows[0]) > 0:
@@ -242,6 +238,7 @@ class listaApp(QtWidgets.QMainWindow, frmlista.Ui_frmlista):
             self.suma = 0
 
     def imprimir(self):
+        self.conta = str(self.cboconta.currentText())
         from codepdf import pdf
         pdf().generar(self.fechamin, self.fechamax, self.rows[0], self.cheque, self.bandera, self.bndpago, self.conta, self.suma)
 

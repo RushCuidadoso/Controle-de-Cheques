@@ -12,7 +12,6 @@ class pdf:
     ajustador = ajuste()
 
     def generar(self, fechamin, fechamax, rows, cheque, bandera, bndpago, conta, suma):
-
         fecha = time.strftime("%d/%m/%y")
         hora = time.strftime("%H:%M")
         # ----------------------
